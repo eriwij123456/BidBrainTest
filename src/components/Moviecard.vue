@@ -1,52 +1,65 @@
 <template>
-	<h1>{{ msg }}</h1>
-
-	<p>
-	Recommended IDE setup:
-	<a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-	+
-	<a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-	</p>
-
-	<p>
-	<a href="https://vitejs.dev/guide/features.html" target="_blank">
-		Vite Documentation
-	</a>
-	|
-	<a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-	</p>
-
-	<button type="button" @click="count++">count is: {{ count }}</button>
-	<p>
-	Edit
-	<code>components/HelloWorld.vue</code> to test hot module replacement.
-	</p>
+<div class="fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+	<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+		<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+		<span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+		<div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+			<p class="absolute top-2 right-4 font-bold text-gray-600 cursor-pointer" @click="closeDialog()">X</p>
+			<div>
+				<img class="w-16 h-16 sm:w-32 sm:h-32 flex-shrink-0 mx-auto rounded-full mb-2" src="https://bit.ly/3EIwWVE" alt="">
+				<div class="mt-3 text-center sm:mt-5">
+					<h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+					{{movie.title}}
+					</h3>
+					<div class="mt-2">
+					<p class="text-sm text-gray-500">
+						Director: {{movie.director}}
+					</p>
+					<p class="text-sm text-gray-500">
+						Bond: {{movie.actor}}
+					</p>
+					<p class="text-sm text-gray-500">
+						Year: {{movie.year}}
+					</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 </template>
 
 <script>
 
+import _ from 'underscore'
+
 export default {
   	data() {
 		return {
-			count = ref(0)	
 		}
   	},
 
-  	components: {
-		Moviecard
-  	},
-
 	props: {
-		msg: String
+		movie: { 
+			required: false 
+		}
 	},
+
+  	components: {
+		
+  	},
 
 	computed: {
   	},
 
 	mounted () {
+		console.log(this.movie);
   	},
 
 	methods: {
+		closeDialog() {
+			this.$emit('closeDialog')
+		}
 	},
 }
 </script>
