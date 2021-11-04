@@ -3,6 +3,12 @@
 1. Clone latest Branch
 2. Install the dependencies - npm install
 3. Start project - npm run dev
+
+Prioritized stuff that were solvable from experience or a few google searches.
+
+Could have implemented a few more features from P.2 but left them out to stay within a reasonable time frame.
+
+Tests of all sorts has been left out due to complete lack of knowledge...
 _____________________________________________
 
 **Features part 1**
