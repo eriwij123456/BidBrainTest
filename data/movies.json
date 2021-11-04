@@ -4,7 +4,8 @@
       "title": "Skyfall",
       "year": 2012,
       "actor": "Daniel Craig",
-      "director": "Sam Mendes"
+      "director": "Sam Mendes",
+	  "image": "https://m.media-amazon.com/images/M/MV5BMWZiNjE2OWItMTkwNy00ZWQzLWI0NTgtMWE0NjNiYTljN2Q1XkEyXkFqcGdeQXVyNzAwMjYxMzA@._V1_FMjpg_UX1000_.jpg"
     },
     {
       "title": "You Only Live Twice",
@@ -52,7 +53,8 @@
       "title": "Casino Royale",
       "year": 2006,
       "actor": "Daniel Craig",
-      "director": "Martin Campbell"
+      "director": "Martin Campbell",
+	  "image":"https://m.media-amazon.com/images/M/MV5BMDI5ZWJhOWItYTlhOC00YWNhLTlkNzctNDU5YTI1M2E1MWZhXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_.jpg"
     },
     {
       "title": "The Spy Who Loved Me",
