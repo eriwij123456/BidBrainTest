@@ -5,10 +5,11 @@
 		</div>
 		<div class="mx-auto w-3/4 sm:w-2/3 px-4 py-4">
 			<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
-				<div class="flex-1 flex flex-col p-4 sm:p-8 bg-white rounded-md text-center" v-for="bond in filteredList" :key="bond">
+				<div @click="openMovie(bond)" class="flex-1 flex flex-col p-4 sm:p-8 bg-white rounded-md text-center hover:opacity-75 cursor-pointer" v-for="bond in filteredList" :key="bond">
 					<img class="w-16 h-16 sm:w-32 sm:h-32 flex-shrink-0 mx-auto rounded-full mb-2" src="https://bit.ly/3EIwWVE" alt="">
 					<p class="text-xs sm:text-sm font-bold">{{ bond.title }}</p>
 				</div>
+				<Moviecard v-if="dialog" @closeDialog="closeDialog()" :movie="selectedMovie"/>
 			</div>
 		</div>
 	</div>
@@ -16,6 +17,7 @@
 
 <script>
 
+import Moviecard from './components/Moviecard.vue'
 import movies from '../data/movies.json'
 import _ from 'underscore'
 
@@ -27,11 +29,13 @@ export default {
 			movies: movies,
 			sortable: [],
 			searchQuery: null,
+			dialog: false,
+			selectedMovie: null
 		}
   	},
 
   	components: {
-		
+		Moviecard,
   	},
 
 	props: {
@@ -58,6 +62,15 @@ export default {
   	},
 
 	methods: {
+		openMovie (bond) {
+			console.log();
+			this.selectedMovie = bond
+			this.dialog = true
+		},
+
+		closeDialog () {
+			this.dialog = false
+		}
 	},
 }
 </script>
