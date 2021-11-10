@@ -51,9 +51,17 @@ export default {
 	computed: {
 		filteredList(){
 			if (this.searchQuery){
+
+				
+				
 				return this.sortable.filter((bond)=>{
-					return this.searchQuery.toLowerCase().split(' ').every(v => bond.title.toLowerCase().includes(v) || bond.director.toLowerCase().includes(v) || bond.actor.toLowerCase().includes(v))
+					this.mergedStrings = bond.title + bond.actor + bond.director + bond.year.toString()
+					return this.searchQuery.toLowerCase().split(' ').every(v => this.mergedStrings.toLowerCase().includes(v))
+					// return this.searchQuery.toLowerCase().split(' ').every(v => bond.title.toLowerCase().includes(v) || bond.director.toLowerCase().includes(v) || bond.actor.toLowerCase().includes(v))
 				})
+
+
+
 			} else {
 				return this.sortable;
 			}
@@ -61,16 +69,14 @@ export default {
   	},
 
 	mounted () {
-		this.sortable = _.values(movies)
-		this.sortable = _.flatten(this.sortable, false)
-		this.sortable = (this.sortable.sort(function (a, b) {
+		this.sortable = _.flatten(_.values(movies), false)
+		this.sortable.sort(function (a, b) {
 			return b.year - a.year;
-		}))
+		})
   	},
 
 	methods: {
 		openMovie (bond) {
-			console.log();
 			this.selectedMovie = bond
 			this.dialog = true
 		},
